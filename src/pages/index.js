@@ -14,13 +14,39 @@ const geistMono = Geist_Mono({
 export default function Home() {
   return (
     <div
-      className={`min-h-screen p-8 pb-20 gap-16 sm:p-20 font-mono`}
+      className={`min-h-screen font-mono snap-y snap-mandatory overflow-y-scroll h-screen`}
     >
-      <section className="">
-        <div className="text-xl ">dashboard hero</div>
+      <section className="relative snap-start h-screen bg-gray-100 overflow-hidden">
+        {/* Background dinamis */}
+        <div className="absolute inset-0 z-0">
+          <img src="1.jpg" alt="Banner" className="object-cover w-full h-full" />
+          <img src="2.jpg" alt="Banner" className="object-cover w-full h-full" />
+        </div>
+
+        <div className="relative z-10 flex flex-row justify-between p-5">
+          <div className="rounded-2xl">
+            <img src="logo.png" alt="Logo" className="h-10 w-auto" />
+          </div>
+          <div className="flex flex-row gap-5">
+            {["Home", "About", "Contact", "Article"].map((label, i) => (
+              <a
+                key={i}
+                href="#"
+                className="relative inline-block text-white text-xl group"
+              >
+                <span className="relative z-10">{label}</span>
+                <span className="absolute left-0 bottom-0 h-[2px] w-full bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-right group-hover:origin-left"></span>
+              </a>
+            ))}
+          </div>
+        </div>
       </section>
-      <section></section>
-      <section></section>
+      <section className="snap-start h-screen flex items-center justify-center bg-gray-200">
+        <div className="text-xl">Section Kedua</div>
+      </section>
+      <section className="snap-start h-screen flex items-center justify-center bg-gray-300">
+        <div className="text-xl">Section Ketiga</div>
+      </section>
     </div>
   );
 }
